@@ -1,0 +1,28 @@
+Please use the Chain-of-Thought Reasoning technique to analyze database requirements and select the most appropriate solution. Break down your analysis into the following steps:
+
+1. Requirements Analysis:
+   - List all key requirements from the description
+   - Determine priorities and constraints
+   - Identify critical factors affecting the choice
+
+2. Database Types Evaluation:
+   - Consider relational (SQL) databases
+   - Consider NoSQL databases
+   - Evaluate their compliance with requirements
+
+3. Performance Analysis:
+   - Evaluate read/write performance
+   - Analyze scalability
+   - Consider data storage requirements
+
+4. Comparative Analysis:
+   - Compare advantages and disadvantages of each option
+   - Evaluate compliance with project requirements
+   - Consider future scaling needs
+
+5. Conclusion:
+   - Select the optimal solution
+   - Justify the choice
+   - Suggest alternative options
+
+For each step, provide a detailed explanation of your reasoning and conclusions. 
