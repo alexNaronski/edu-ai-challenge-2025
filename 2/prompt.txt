@@ -1,0 +1,46 @@
+Please convert the informal bug description into a structured report following this format:
+
+1. Title:
+   - Brief, informative description of the issue
+   - Include key details (browser, component, action)
+   - Use active voice
+
+2. Description:
+   - Detailed problem description
+   - Context of occurrence
+   - Impact on user
+   - Any additional observations
+
+3. Steps to Reproduce:
+   - Numbered list of actions
+   - Start with initial state
+   - Include all necessary steps
+   - Specify concrete values if applicable
+
+4. Expected vs Actual Behavior:
+   - Expected behavior: what should happen
+   - Actual behavior: what actually happens
+   - Clear comparison of results
+
+5. Environment:
+   - Operating system
+   - Browser/application version
+   - Device (if applicable)
+   - Other relevant details
+
+6. Severity/Impact:
+   - Severity level (Critical, High, Medium, Low)
+   - Explanation of user impact
+   - Business consequences
+
+Formatting rules:
+- Use bullet points for better readability
+- Add empty lines between sections
+- Highlight important details in bold
+- Use technical terms correctly
+
+For each bug:
+1. Analyze the provided description
+2. Extract implicit information
+3. Structure data according to the format
+4. Add missing details if they logically follow from the context 
