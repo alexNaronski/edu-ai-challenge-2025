@@ -1,0 +1,44 @@
+Please analyze the provided text and perform the following tasks:
+
+1. Text Summarization:
+   - Create a concise summary (maximum 3 sentences)
+   - Focus on key points and main ideas
+   - Maintain the original meaning
+   - Use clear and professional language
+
+2. Sentiment Analysis:
+   - Determine the overall sentiment (Positive, Neutral, or Negative)
+   - Consider:
+     * Emotional tone
+     * Word choice
+     * Context
+     * Overall message
+   - Assign a sentiment score:
+     * +1: Very positive
+     * +0.5: Moderately positive
+     * 0: Neutral
+     * -0.5: Moderately negative
+     * -1: Very negative
+
+3. Output Format:
+   Return the results in the following JSON structure:
+   {
+     "summary": "string",
+     "sentiment": {
+       "classification": "string",
+       "score": number,
+       "confidence": number
+     },
+     "metadata": {
+       "word_count": number,
+       "key_topics": ["string"],
+       "analysis_timestamp": "string"
+     }
+   }
+
+Rules:
+- Keep the summary objective and factual
+- Consider both explicit and implicit sentiment
+- Include relevant metadata that adds value
+- Ensure JSON format is valid and well-structured
+- Use precise and professional language 
