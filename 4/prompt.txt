@@ -1,29 +1,6 @@
-Please analyze the following JavaScript code from three different expert perspectives. For each role, provide specific, actionable recommendations and observations.
+Please analyze the code from the provided file (processUserData.js) from three different expert perspectives. For each role, provide specific, actionable recommendations and observations.
 
-Code to analyze:
-```javascript
-function processUserData(data: any) {
-  var users = [];
-
-  for (var i = 0; i < data.length; i++) {
-    var user = {
-      id: data[i].id,
-      name: data[i].name,
-      email: data[i].email,
-      active: data[i].status === 'active' ? true : false
-    };
-    users.push(user);
-  }
-  console.log("Processed " + users.length + " users");
-  return users;
-}
-
-function saveToDatabase(users) {
-  //TODO: Implement database connection
-  var success = true;
-  return success;
-}
-```
+File to analyze: processUserData.js
 
 Please provide analysis from the following perspectives:
 
@@ -57,5 +34,11 @@ For each perspective:
 - Suggest specific improvements
 - Explain the rationale behind recommendations
 - Prioritize the most critical issues
+
+When referencing code:
+- Use file paths and line numbers
+- Quote specific code snippets when necessary
+- Reference related files if they exist
+- Use markdown code blocks for examples
 
 Format your response with clear sections for each role, using markdown for better readability. 
