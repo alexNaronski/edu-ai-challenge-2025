@@ -2,12 +2,13 @@
   "feedback1": {
     "sentiment": "Negative",
     "isRelevant": true,
-    "mainSubject": "Mouse sensor and connectivity issues",
+    "mainSubject": "Sensor tracking and connectivity reliability",
     "positives": [],
     "painPoints": [
       "Frequent sensor tracking interruptions",
       "Non-working dongle",
-      "High price point for problematic product"
+      "High price point for problematic product",
+      "Issues persist in both wireless and wired modes"
     ],
     "improvementSuggestions": [
       "Fix sensor tracking stability",
@@ -19,6 +20,7 @@
       "Sensor tracking",
       "Polling rate (8000hz)",
       "Wireless connectivity",
+      "Wired mode",
       "Price"
     ],
     "userExpertise": "Experienced"
@@ -26,24 +28,34 @@
   "feedback2": {
     "sentiment": "Mixed",
     "isRelevant": true,
-    "mainSubject": "Product value and performance",
+    "mainSubject": "Product value and performance comparison",
     "positives": [
-      "No technical flaws",
-      "Good performance"
+      "No technical flaws in the product",
+      "Good overall performance",
+      "Product meets quality expectations",
+      "Suitable for users who value the product"
     ],
     "painPoints": [
-      "High price point",
-      "Overpriced compared to alternatives"
+      "Significantly higher price point",
+      "Overpriced compared to alternatives",
+      "Similar performance available at lower cost",
+      "Price-performance ratio is not optimal",
+      "Half the specifications available in cheaper alternatives"
     ],
     "improvementSuggestions": [
-      "Adjust pricing strategy",
-      "Add more value-adding features",
-      "Better differentiate from cheaper alternatives"
+      "Adjust pricing strategy to match market value",
+      "Add more premium features to justify the price",
+      "Better differentiate from cheaper alternatives",
+      "Improve price-performance ratio",
+      "Consider offering different price tiers"
     ],
     "featuresMentioned": [
       "Price",
       "Performance",
-      "Value proposition"
+      "Value proposition",
+      "Product quality",
+      "Technical specifications",
+      "Market positioning"
     ],
     "userExpertise": "Experienced"
   }

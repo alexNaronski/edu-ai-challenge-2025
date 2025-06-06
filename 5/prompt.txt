@@ -1,58 +1,89 @@
-Analyze the following user feedback about the product. For each feedback, provide a structured analysis in JSON format.
+Analyze the following user feedback about the product. For each feedback, provide a structured analysis in JSON format. Focus on detailed feature analysis and specific user experience aspects.
 
 Examples of correct analysis:
 
-Feedback: "I've been using this for about a month now and I'm really impressed with the battery life. It lasts way longer than my previous device. The only downside is that it's a bit heavy to carry around all day."
+Feedback 1: "I've never been a fan of the GPX shape and to me, it feels like I am holding a potato. The front hump felt a bit intrusive on the backside of my knucles. Ergonomics are better on the Viper V3 PRO specially on the rear portion of the mouse and the side part where you rest/grip your fingers to hold the mouse."
 
 Analysis:
 {
   "sentiment": "Positive",
   "isRelevant": true,
-  "mainSubject": "Battery life and portability",
-  "positives": ["Impressive battery life", "Long-lasting performance"],
-  "painPoints": ["Heavy weight", "Portability issues"],
-  "improvementSuggestions": ["Reduce device weight", "Improve ergonomics"],
-  "featuresMentioned": ["Battery", "Portability"],
+  "mainSubject": "Ergonomics and shape (compared favorably to GPX)",
+  "positives": [
+    "Ergonomics are better on the Viper V3 PRO",
+    "Better rear portion ergonomics",
+    "Better side grip area"
+  ],
+  "painPoints": [],
+  "improvementSuggestions": [],
+  "featuresMentioned": [
+    "Ergonomics",
+    "Shape",
+    "Rear design",
+    "Side grip"
+  ],
   "userExpertise": "Experienced"
 }
 
-Feedback: "The screen is amazing! Colors are vibrant and the refresh rate is smooth. However, I wish the speakers were louder and the price is a bit steep for what you get."
+Feedback 2: "If you are a GPX lover, I think they managed to improve everything I thought It was wrong about the GPX series, they made the shape better, they fixed the side buttons, scrolling wheel is better, gliding is faster and feels like the perfect compromise between control and speed."
 
 Analysis:
 {
-  "sentiment": "Mixed",
+  "sentiment": "Positive",
   "isRelevant": true,
-  "mainSubject": "Display quality and audio",
-  "positives": ["Vibrant colors", "Smooth refresh rate", "High-quality screen"],
-  "painPoints": ["Low speaker volume", "High price point"],
-  "improvementSuggestions": ["Increase speaker volume", "Adjust pricing strategy"],
-  "featuresMentioned": ["Display", "Speakers", "Price"],
+  "mainSubject": "Feature improvements over competitor (GPX)",
+  "positives": [
+    "Better shape than GPX series",
+    "Improved side buttons",
+    "Better scrolling wheel",
+    "Faster gliding with good control-speed balance"
+  ],
+  "painPoints": [],
+  "improvementSuggestions": [],
+  "featuresMentioned": [
+    "Shape",
+    "Side buttons",
+    "Scrolling wheel",
+    "Gliding performance"
+  ],
   "userExpertise": "Experienced"
 }
 
-Feedback: "Just got this yesterday and I'm still figuring out how to use it. The manual is not very helpful."
+Feedback 3: "I can't say I'm a fan of the material used for the shell, either—the plastic attracts fingerprints like a grease magnet and the mouse needed to be furiously cleaned, repeatedly, before any pictures could be taken. It also feels a bit on the cheap side, although that's mostly down to Razer's decision to make the Viper V3 Pro as light as possible."
 
 Analysis:
 {
   "sentiment": "Negative",
   "isRelevant": true,
-  "mainSubject": "User experience and documentation",
+  "mainSubject": "Material quality and feel",
   "positives": [],
-  "painPoints": ["Unclear instructions", "Poor documentation", "Steep learning curve"],
-  "improvementSuggestions": ["Improve user manual", "Add more tutorials", "Simplify interface"],
-  "featuresMentioned": ["Documentation", "User interface"],
-  "userExpertise": "Novice"
+  "painPoints": [
+    "Shell material attracts fingerprints excessively",
+    "Requires frequent cleaning",
+    "Material feels cheap",
+    "Design prioritizes weight over premium feel"
+  ],
+  "improvementSuggestions": [
+    "Use material that resists fingerprints better",
+    "Improve perceived build quality while maintaining low weight"
+  ],
+  "featuresMentioned": [
+    "Shell material",
+    "Build quality feel",
+    "Weight"
+  ],
+  "userExpertise": "Experienced"
 }
 
 Now analyze the following feedback using the same format and structure. For each feedback:
 1. Determine the overall sentiment (Positive, Negative, Neutral, Mixed)
 2. Assess the relevance of the feedback (isRelevant)
-3. Identify the main subject of discussion
-4. List positive aspects
-5. Note pain points
-6. Suggest possible improvements
-7. Mark mentioned features
-8. Evaluate user expertise level
+3. Identify the main subject of discussion, including any comparisons or specific aspects mentioned
+4. List positive aspects, focusing on specific features and user experience elements
+5. Note pain points, including both technical issues and user experience concerns
+6. Suggest possible improvements, considering both technical and user experience aspects
+7. Mark mentioned features, including both explicit and implicit feature references
+8. Evaluate user expertise level based on technical knowledge and experience shown
 
 Feedback to analyze:
 
@@ -60,4 +91,4 @@ Feedback to analyze:
 
 2. "Is it worth it? It is a product with no flaws in my opinion, if you love it go for it, but its not worth the price since you'll be able to perform the same with a cheaper product with half the specs."
 
-Provide the analysis in JSON format for each feedback. 
+Provide the analysis in JSON format for each feedback, ensuring detailed feature analysis and specific user experience aspects are captured. 
