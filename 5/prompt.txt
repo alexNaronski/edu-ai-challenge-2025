@@ -1,0 +1,63 @@
+Analyze the following user feedback about the product. For each feedback, provide a structured analysis in JSON format.
+
+Examples of correct analysis:
+
+Feedback: "I've been using this for about a month now and I'm really impressed with the battery life. It lasts way longer than my previous device. The only downside is that it's a bit heavy to carry around all day."
+
+Analysis:
+{
+  "sentiment": "Positive",
+  "isRelevant": true,
+  "mainSubject": "Battery life and portability",
+  "positives": ["Impressive battery life", "Long-lasting performance"],
+  "painPoints": ["Heavy weight", "Portability issues"],
+  "improvementSuggestions": ["Reduce device weight", "Improve ergonomics"],
+  "featuresMentioned": ["Battery", "Portability"],
+  "userExpertise": "Experienced"
+}
+
+Feedback: "The screen is amazing! Colors are vibrant and the refresh rate is smooth. However, I wish the speakers were louder and the price is a bit steep for what you get."
+
+Analysis:
+{
+  "sentiment": "Mixed",
+  "isRelevant": true,
+  "mainSubject": "Display quality and audio",
+  "positives": ["Vibrant colors", "Smooth refresh rate", "High-quality screen"],
+  "painPoints": ["Low speaker volume", "High price point"],
+  "improvementSuggestions": ["Increase speaker volume", "Adjust pricing strategy"],
+  "featuresMentioned": ["Display", "Speakers", "Price"],
+  "userExpertise": "Experienced"
+}
+
+Feedback: "Just got this yesterday and I'm still figuring out how to use it. The manual is not very helpful."
+
+Analysis:
+{
+  "sentiment": "Negative",
+  "isRelevant": true,
+  "mainSubject": "User experience and documentation",
+  "positives": [],
+  "painPoints": ["Unclear instructions", "Poor documentation", "Steep learning curve"],
+  "improvementSuggestions": ["Improve user manual", "Add more tutorials", "Simplify interface"],
+  "featuresMentioned": ["Documentation", "User interface"],
+  "userExpertise": "Novice"
+}
+
+Now analyze the following feedback using the same format and structure. For each feedback:
+1. Determine the overall sentiment (Positive, Negative, Neutral, Mixed)
+2. Assess the relevance of the feedback (isRelevant)
+3. Identify the main subject of discussion
+4. List positive aspects
+5. Note pain points
+6. Suggest possible improvements
+7. Mark mentioned features
+8. Evaluate user expertise level
+
+Feedback to analyze:
+
+1. "Sensor just stops tracking for like a half second kinda often even at 8000hz. I've also tried it plugged in and still the same problem. First one I got I had to return also because the dongle just didnt work, $150 mouse btw"
+
+2. "Is it worth it? It is a product with no flaws in my opinion, if you love it go for it, but its not worth the price since you'll be able to perform the same with a cheaper product with half the specs."
+
+Provide the analysis in JSON format for each feedback. 

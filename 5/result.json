@@ -1,0 +1,50 @@
+{
+  "feedback1": {
+    "sentiment": "Negative",
+    "isRelevant": true,
+    "mainSubject": "Mouse sensor and connectivity issues",
+    "positives": [],
+    "painPoints": [
+      "Frequent sensor tracking interruptions",
+      "Non-working dongle",
+      "High price point for problematic product"
+    ],
+    "improvementSuggestions": [
+      "Fix sensor tracking stability",
+      "Improve dongle reliability",
+      "Address quality control issues",
+      "Reconsider price point"
+    ],
+    "featuresMentioned": [
+      "Sensor tracking",
+      "Polling rate (8000hz)",
+      "Wireless connectivity",
+      "Price"
+    ],
+    "userExpertise": "Experienced"
+  },
+  "feedback2": {
+    "sentiment": "Mixed",
+    "isRelevant": true,
+    "mainSubject": "Product value and performance",
+    "positives": [
+      "No technical flaws",
+      "Good performance"
+    ],
+    "painPoints": [
+      "High price point",
+      "Overpriced compared to alternatives"
+    ],
+    "improvementSuggestions": [
+      "Adjust pricing strategy",
+      "Add more value-adding features",
+      "Better differentiate from cheaper alternatives"
+    ],
+    "featuresMentioned": [
+      "Price",
+      "Performance",
+      "Value proposition"
+    ],
+    "userExpertise": "Experienced"
+  }
+} 
