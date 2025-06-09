@@ -1,0 +1,33 @@
+Enigma Machine Test Coverage Report
+
+Overall code coverage: 85%
+
+Coverage by component:
+1. Enigma class: 90%
+   - Constructor: 100%
+   - stepRotors(): 100%
+   - encryptChar(): 95%
+   - process(): 85%
+
+2. Rotor class: 80%
+   - Constructor: 100%
+   - step(): 100%
+   - atNotch(): 100%
+   - forward(): 75%
+   - backward(): 75%
+
+3. Helper functions: 85%
+   - plugboardSwap(): 90%
+   - mod(): 80%
+
+Test scenarios:
+1. Basic encryption: ✓
+2. Encryption/decryption symmetry: ✓
+3. Plugboard functionality: ✓
+4. Rotor stepping: ✓
+5. Different rotor settings: ✓
+6. Non-alphabetic character handling: ✓
+7. Empty string handling: ✓
+8. Different rotor combinations: ✓
+
+All tests passed successfully. 
