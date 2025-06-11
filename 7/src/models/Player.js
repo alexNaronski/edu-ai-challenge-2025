@@ -55,7 +55,7 @@ export class Player {
 
       if (!collision) {
         const ship = new Ship(this.shipLength, locations);
-        this.board.placeShip(ship, !this.isCPU);
+        this.board.placeShip(ship);
         placedShips++;
       }
     }
@@ -73,6 +73,12 @@ export class Player {
 
     this.guesses.add(guess);
     const result = this.board.processGuess(guess);
+    
+    // Если это ход CPU, обновляем его стратегию
+    if (this.isCPU && result.hit) {
+      this.updateCPUTargeting(guess);
+    }
+    
     return { valid: true, ...result };
   }
 
@@ -88,7 +94,6 @@ export class Player {
       guess = `${row}${col}`;
     } while (this.guesses.has(guess));
     
-    this.guesses.add(guess);
     return guess;
   }
 

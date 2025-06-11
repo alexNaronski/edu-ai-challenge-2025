@@ -74,9 +74,20 @@ export class Game {
    */
   async processPlayerTurn() {
     const guess = await this.ui.getPlayerGuess();
-    const result = this.cpu.makeGuess(guess);
     
-    if (result.valid) {
+    // Проверяем, не было ли это место уже атаковано на доске CPU
+    if (this.cpu.board.grid[guess[0]][guess[1]] === 'X' || this.cpu.board.grid[guess[0]][guess[1]] === 'O') {
+      this.ui.displayMessage('This location was already targeted!');
+      return true;
+    }
+    
+    // Добавляем ход в список ходов игрока
+    this.player.guesses.add(guess);
+    
+    // Обрабатываем ход на доске CPU
+    const result = this.cpu.board.processGuess(guess);
+    
+    if (result) {
       this.ui.displayMessage(result.message);
       
       if (this.cpu.board.isAllShipsSunk()) {
@@ -96,6 +107,12 @@ export class Game {
    */
   processCPUTurn() {
     const guess = this.cpu.generateCPUGuess();
+    
+    // Проверяем, не было ли это место уже атаковано на доске игрока
+    if (this.player.board.grid[guess[0]][guess[1]] === 'X' || this.player.board.grid[guess[0]][guess[1]] === 'O') {
+      return this.processCPUTurn(); // Пробуем другой ход
+    }
+    
     const result = this.player.makeGuess(guess);
     
     this.ui.displayMessage('\n--- CPU\'s Turn ---');
