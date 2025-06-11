@@ -74,23 +74,19 @@ export class Game {
    */
   async processPlayerTurn() {
     const guess = await this.ui.getPlayerGuess();
+    const result = this.player.makeGuess(guess);
     
-    if (!this.validateGuess(guess)) {
-      return true;
+    if (result.valid) {
+      this.ui.displayMessage(result.message);
+      
+      if (this.cpu.board.isAllShipsSunk()) {
+        this.ui.displayMessage('\n*** CONGRATULATIONS! You sunk all enemy battleships! ***');
+        return false;
+      }
+      
+      this.processCPUTurn();
     }
-
-    const result = this.cpu.makeGuess(guess);
-    this.ui.displayMessage(result.message);
-
-    if (result.hit && !result.sunk) {
-      this.cpu.updateCPUTargeting(guess);
-    }
-
-    if (this.cpu.board.areAllShipsSunk()) {
-      this.ui.displayMessage('\n*** CONGRATULATIONS! You sunk all enemy battleships! ***');
-      return false;
-    }
-
+    
     return true;
   }
 
@@ -100,22 +96,22 @@ export class Game {
    */
   processCPUTurn() {
     const guess = this.cpu.generateCPUGuess();
-    this.ui.displayMessage(`\n--- CPU's Turn ---`);
+    const result = this.cpu.makeGuess(guess);
+    
+    this.ui.displayMessage('\n--- CPU\'s Turn ---');
     this.ui.displayMessage(`CPU targets: ${guess}`);
-
-    const result = this.player.makeGuess(guess);
     this.ui.displayMessage(result.message);
-
-    if (result.hit && !result.sunk) {
-      this.cpu.updateCPUTargeting(guess);
-    }
-
-    if (this.player.board.areAllShipsSunk()) {
+    
+    if (this.player.board.isAllShipsSunk()) {
       this.ui.displayMessage('\n*** GAME OVER! The CPU sunk all your battleships! ***');
       return false;
     }
-
+    
     return true;
+  }
+
+  isGameOver() {
+    return this.cpu.board.isAllShipsSunk() || this.player.board.isAllShipsSunk();
   }
 
   /**
@@ -124,12 +120,11 @@ export class Game {
   async start() {
     this.initialize();
 
-    while (true) {
+    while (!this.isGameOver()) {
       this.ui.displayBoards(this.cpu.board.getState(), this.player.board.getState());
 
-      if (!(await this.processPlayerTurn())) {
-        break;
-      }
+      const continueGame = await this.processPlayerTurn();
+      if (!continueGame) break;
 
       if (!this.processCPUTurn()) {
         break;

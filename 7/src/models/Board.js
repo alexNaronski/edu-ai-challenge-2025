@@ -1,6 +1,8 @@
 /**
  * Class representing a game board
  */
+import { Ship } from './Ship.js';
+
 export class Board {
   /**
    * Create a game board
@@ -17,12 +19,15 @@ export class Board {
    * @param {Ship} ship - The ship to place
    * @param {boolean} showShip - Whether to show the ship on the board
    */
-  placeShip(ship, showShip = false) {
-    ship.locations.forEach(location => {
+  placeShip(ship) {
+    const shipInstance = new Ship(ship.length);
+    shipInstance.locations = ship.locations;
+    this.ships.push(shipInstance);
+    
+    for (const location of ship.locations) {
       const [row, col] = location.split('').map(Number);
-      this.grid[row][col] = showShip ? 'S' : '~';
-    });
-    this.ships.push(ship);
+      this.grid[row][col] = 'S';
+    }
   }
 
   /**
@@ -67,7 +72,7 @@ export class Board {
    * Check if all ships are sunk
    * @returns {boolean} True if all ships are sunk
    */
-  areAllShipsSunk() {
+  isAllShipsSunk() {
     return this.ships.every(ship => ship.isSunk());
   }
 } 

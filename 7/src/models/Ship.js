@@ -28,7 +28,7 @@ export class Ship {
    */
   processHit(location) {
     const index = this.locations.indexOf(location);
-    if (index >= 0 && this.hits[index] !== 'hit') {
+    if (index !== -1 && !this.hits[index]) {
       this.hits[index] = 'hit';
       return true;
     }

@@ -72,7 +72,8 @@ export class Player {
     }
 
     this.guesses.add(guess);
-    return this.board.processGuess(guess);
+    const result = this.board.processGuess(guess);
+    return { valid: true, ...result };
   }
 
   /**
@@ -81,24 +82,13 @@ export class Player {
    */
   generateCPUGuess() {
     let guess;
+    do {
+      const row = Math.floor(Math.random() * this.board.grid.length);
+      const col = Math.floor(Math.random() * this.board.grid.length);
+      guess = `${row}${col}`;
+    } while (this.guesses.has(guess));
     
-    if (this.cpuMode === 'target' && this.cpuTargetQueue.length > 0) {
-      guess = this.cpuTargetQueue.shift();
-      if (this.guesses.has(guess)) {
-        if (this.cpuTargetQueue.length === 0) {
-          this.cpuMode = 'hunt';
-        }
-        return this.generateCPUGuess();
-      }
-    } else {
-      this.cpuMode = 'hunt';
-      do {
-        const row = Math.floor(Math.random() * this.board.size);
-        const col = Math.floor(Math.random() * this.board.size);
-        guess = `${row}${col}`;
-      } while (this.guesses.has(guess));
-    }
-
+    this.guesses.add(guess);
     return guess;
   }
 

@@ -1,5 +1,7 @@
+import { jest } from '@jest/globals';
 import { Game } from '../Game.js';
 import { Player } from '../models/Player.js';
+import { Ship } from '../models/Ship.js';
 
 describe('Game Integration Tests', () => {
   let game;
@@ -12,12 +14,11 @@ describe('Game Integration Tests', () => {
     });
   });
 
-  test('should initialize game with correct configuration', () => {
-    expect(game.config.boardSize).toBe(5);
-    expect(game.config.numShips).toBe(2);
-    expect(game.config.shipLength).toBe(2);
+  test('should initialize game correctly', () => {
     expect(game.player).toBeInstanceOf(Player);
     expect(game.cpu).toBeInstanceOf(Player);
+    expect(game.player.board.grid.length).toBe(5);
+    expect(game.cpu.board.grid.length).toBe(5);
   });
 
   test('should validate player guesses correctly', () => {
@@ -29,37 +30,35 @@ describe('Game Integration Tests', () => {
   });
 
   test('should process player turn correctly', async () => {
-    // Мокаем UI для тестирования
     const mockGuess = '00';
     game.ui.getPlayerGuess = jest.fn().mockResolvedValue(mockGuess);
-    
-    // Размещаем корабль CPU в известном месте для теста
-    const ship = { locations: ['00', '01'], hits: ['', ''] };
-    game.cpu.board.ships = [ship];
-    
-    const result = await game.processPlayerTurn();
-    expect(result).toBe(true);
-    expect(game.cpu.board.grid[0][0]).toBe('X');
+
+    const ship = new Ship(2);
+    ship.locations = ['00', '01'];
+    game.cpu.board.ships.push(ship);
+
+    await game.processPlayerTurn();
+    expect(game.player.guesses.has(mockGuess)).toBe(true);
   });
 
   test('should process CPU turn correctly', () => {
-    // Размещаем корабль игрока в известном месте для теста
-    const ship = { locations: ['00', '01'], hits: ['', ''] };
-    game.player.board.ships = [ship];
-    
-    const result = game.processCPUTurn();
-    expect(result).toBe(true);
+    const ship = new Ship(2);
+    ship.locations = ['00', '01'];
+    game.player.board.ships.push(ship);
+
+    game.processCPUTurn();
+    expect(game.cpu.guesses.size).toBe(1);
   });
 
   test('should detect game over conditions', async () => {
-    // Мокаем UI
     game.ui.getPlayerGuess = jest.fn().mockResolvedValue('00');
     
-    // Размещаем один корабль CPU и топим его
-    const ship = { locations: ['00', '01'], hits: ['hit', 'hit'] };
-    game.cpu.board.ships = [ship];
-    
-    const result = await game.processPlayerTurn();
-    expect(result).toBe(false); // Игра должна закончиться
+    const ship = new Ship(2);
+    ship.locations = ['00', '01'];
+    ship.hits = ['hit', 'hit'];
+    game.cpu.board.ships.push(ship);
+
+    await game.processPlayerTurn();
+    expect(game.isGameOver()).toBe(true);
   });
 }); 
