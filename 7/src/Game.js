@@ -119,16 +119,11 @@ export class Game {
    */
   async start() {
     this.initialize();
-
+    
     while (!this.isGameOver()) {
-      this.ui.displayBoards(this.cpu.board.getState(), this.player.board.getState());
-
+      this.ui.displayBoards(this.cpu.board.getState(false), this.player.board.getState(true));
       const continueGame = await this.processPlayerTurn();
       if (!continueGame) break;
-
-      if (!this.processCPUTurn()) {
-        break;
-      }
     }
 
     this.ui.displayBoards(this.cpu.board.getState(), this.player.board.getState());

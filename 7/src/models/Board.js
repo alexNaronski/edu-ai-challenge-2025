@@ -64,8 +64,20 @@ export class Board {
    * Get the current state of the board
    * @returns {string[][]} The current board state
    */
-  getState() {
-    return this.grid;
+  getState(showShips = false) {
+    const state = Array(this.size).fill().map(() => Array(this.size).fill('~'));
+    
+    for (let i = 0; i < this.size; i++) {
+      for (let j = 0; j < this.size; j++) {
+        if (this.grid[i][j] === 'X' || this.grid[i][j] === 'O') {
+          state[i][j] = this.grid[i][j];
+        } else if (showShips && this.grid[i][j] === 'S') {
+          state[i][j] = 'S';
+        }
+      }
+    }
+    
+    return state;
   }
 
   /**
