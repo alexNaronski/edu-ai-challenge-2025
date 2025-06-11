@@ -74,7 +74,7 @@ export class Game {
    */
   async processPlayerTurn() {
     const guess = await this.ui.getPlayerGuess();
-    const result = this.player.makeGuess(guess);
+    const result = this.cpu.makeGuess(guess);
     
     if (result.valid) {
       this.ui.displayMessage(result.message);
@@ -96,7 +96,7 @@ export class Game {
    */
   processCPUTurn() {
     const guess = this.cpu.generateCPUGuess();
-    const result = this.cpu.makeGuess(guess);
+    const result = this.player.makeGuess(guess);
     
     this.ui.displayMessage('\n--- CPU\'s Turn ---');
     this.ui.displayMessage(`CPU targets: ${guess}`);
