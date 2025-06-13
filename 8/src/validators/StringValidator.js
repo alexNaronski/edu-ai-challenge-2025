@@ -56,7 +56,7 @@ class StringValidator extends BaseValidator {
    * @returns {StringValidator} - Returns this for chaining
    */
   email() {
-    return this.pattern(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
+    return this.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/);
   }
 }
 
