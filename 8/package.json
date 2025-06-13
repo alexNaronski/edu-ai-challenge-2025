@@ -1,0 +1,20 @@
+{
+  "name": "validation-library",
+  "version": "1.0.0",
+  "description": "A robust validation library for complex data structures",
+  "main": "src/Schema.js",
+  "scripts": {
+    "test": "jest --coverage",
+    "test:watch": "jest --watch"
+  },
+  "keywords": [
+    "validation",
+    "schema",
+    "validator"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+} 

@@ -1,0 +1,30 @@
+Test Coverage Report
+
+Overall Coverage: 91.34%
+
+File Coverage:
+----------------------|---------|----------|---------|---------|-------------------
+File                  | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
+----------------------|---------|----------|---------|---------|-------------------
+All files             |   91.34 |    80.95 |   92.85 |   91.26 |                  
+ src                  |     100 |      100 |     100 |     100 |                  
+  Schema.js           |     100 |      100 |     100 |     100 |                  
+ src/validators       |   90.32 |    80.95 |   91.89 |   90.21 |                  
+  ArrayValidator.js   |     100 |      100 |     100 |     100 |                  
+  BaseValidator.js    |   83.33 |      100 |      75 |   83.33 | 27-28            
+  BooleanValidator.js |     100 |      100 |     100 |     100 |                  
+  NumberValidator.js  |   82.35 |      100 |      80 |   82.35 | 58-62            
+  ObjectValidator.js  |   78.94 |    63.63 |     100 |   78.94 | 25,31-34         
+  StringValidator.js  |     100 |      100 |     100 |     100 |                  
+
+Test Results:
+- Test Suites: 1 passed, 1 total
+- Tests: 12 passed, 12 total
+- Time: 2.031s
+
+Areas for Improvement:
+1. BaseValidator.js: Add more test cases for custom messages
+2. NumberValidator.js: Add test cases for edge cases
+3. ObjectValidator.js: Add more test cases for optional fields and nested objects
+
+The library meets the requirement of having at least 60% test coverage. 
