@@ -1,0 +1,14 @@
+{
+  "name": "service-analyzer",
+  "version": "1.0.0",
+  "description": "Service analysis tool using OpenAI API",
+  "main": "src/service_analyzer.js",
+  "scripts": {
+    "start": "node src/service_analyzer.js"
+  },
+  "dependencies": {
+    "openai": "^4.28.0",
+    "dotenv": "^16.4.1",
+    "readline-sync": "^1.4.10"
+  }
+} 

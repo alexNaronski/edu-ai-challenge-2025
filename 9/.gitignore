@@ -1,0 +1,9 @@
+# Environment variables
+.env
+
+# Node.js
+node_modules/
+package-lock.json
+
+# Generated reports
+service_report.md
