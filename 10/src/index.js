@@ -19,30 +19,35 @@ const rl = readline.createInterface({
 });
 
 // Определяем схему функции для фильтрации
-const functions = [{
-  name: "filterProducts",
-  description: "Filter products based on user preferences",
-  parameters: {
-    type: "object",
-    properties: {
-      maxPrice: {
-        type: "number",
-        description: "Maximum price of the product"
+const tools = [{
+  type: "function",
+  function: {
+    name: "filterProducts",
+    description: "Filter products based on user preferences",
+    parameters: {
+      type: "object",
+      properties: {
+        maxPrice: {
+          type: "number",
+          description: "Maximum price of the product"
+        },
+        minRating: {
+          type: "number",
+          description: "Minimum rating of the product"
+        },
+        category: {
+          type: "string",
+          description: "Product category (Electronics, Fitness, Kitchen, Books, Clothing)"
+        },
+        inStock: {
+          type: "boolean",
+          description: "Whether the product should be in stock"
+        }
       },
-      minRating: {
-        type: "number",
-        description: "Minimum rating of the product"
-      },
-      category: {
-        type: "string",
-        description: "Product category (Electronics, Fitness, Kitchen, Books, Clothing)"
-      },
-      inStock: {
-        type: "boolean",
-        description: "Whether the product should be in stock"
-      }
+      required: ["maxPrice", "minRating", "category", "inStock"],
+      additionalProperties: false
     },
-    required: ["maxPrice", "minRating", "category", "inStock"]
+    strict: true
   }
 }];
 
@@ -58,31 +63,50 @@ async function filterProducts(params) {
 
 async function processUserQuery(query) {
   try {
+    const messages = [
+      {
+        role: "system",
+        content: "You are a product filtering assistant. Analyze user preferences and call the filterProducts function with appropriate parameters."
+      },
+      {
+        role: "user",
+        content: query
+      }
+    ];
+
     const completion = await openai.chat.completions.create({
       model: "gpt-4.1-mini",
-      messages: [
-        {
-          role: "system",
-          content: "You are a product filtering assistant. Analyze user preferences and call the filterProducts function with appropriate parameters."
-        },
-        {
-          role: "user",
-          content: query
-        }
-      ],
-      functions: functions,
-      function_call: { name: "filterProducts" }
+      messages,
+      tools,
+      store: true
     });
 
-    const functionCall = completion.choices[0].message.function_call;
-    if (functionCall) {
-      const params = JSON.parse(functionCall.arguments);
-      const filteredProducts = await filterProducts(params);
-      
-      console.log('\nFiltered Products:');
-      filteredProducts.forEach((product, index) => {
-        console.log(`${index + 1}. ${product.name} - $${product.price}, Rating: ${product.rating}, ${product.in_stock ? 'In Stock' : 'Out of Stock'}`);
+    const toolCalls = completion.choices[0].message.tool_calls;
+    if (toolCalls) {
+      for (const toolCall of toolCalls) {
+        const args = JSON.parse(toolCall.function.arguments);
+        const filteredProducts = await filterProducts(args);
+        
+        // Добавляем результат в сообщения
+        messages.push(completion.choices[0].message);
+        messages.push({
+          role: "tool",
+          tool_call_id: toolCall.id,
+          content: JSON.stringify(filteredProducts)
+        });
+      }
+
+      // Получаем финальный ответ
+      const finalCompletion = await openai.chat.completions.create({
+        model: "gpt-4.1-mini",
+        messages,
+        tools,
+        store: true
       });
+
+      // Выводим результаты
+      console.log('\nFiltered Products:');
+      console.log(finalCompletion.choices[0].message.content);
     }
   } catch (error) {
     console.error('Error:', error.message);
