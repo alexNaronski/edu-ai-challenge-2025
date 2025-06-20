@@ -1,0 +1,27 @@
+{
+  "name": "audio-analyzer",
+  "version": "1.0.0",
+  "description": "Консольное приложение для анализа аудио файлов с использованием OpenAI Whisper и GPT",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "analyze": "node src/index.js"
+  },
+  "keywords": [
+    "audio",
+    "transcription",
+    "whisper",
+    "openai",
+    "gpt",
+    "analysis"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "openai": "^4.20.1",
+    "dotenv": "^16.3.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+} 
