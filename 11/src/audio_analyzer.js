@@ -33,15 +33,15 @@ class AudioAnalyzer {
             console.log('Генерирую краткое содержание...');
             
             const summary = await this.openai.chat.completions.create({
-                model: "gpt-4",
+                model: "gpt-4.1-mini",
                 messages: [
                     {
                         role: "system",
-                        content: "Ты - эксперт по созданию кратких и информативных резюме. Создай краткое содержание текста, выделив основные идеи и ключевые моменты."
+                        content: "You are an expert at creating concise and informative summaries. Create a summary of the text, highlighting the main ideas and key points."
                     },
                     {
                         role: "user",
-                        content: `Создай краткое содержание следующего текста:\n\n${transcription}`
+                        content: `Create a summary of the following text:\n\n${transcription}`
                     }
                 ],
                 max_tokens: 500,
@@ -61,20 +61,20 @@ class AudioAnalyzer {
             console.log('Генерирую аналитику...');
             
             const analytics = await this.openai.chat.completions.create({
-                model: "gpt-4",
+                model: "gpt-4.1-mini",
                 messages: [
                     {
                         role: "system",
-                        content: `Ты - эксперт по анализу текста. Проанализируй предоставленный текст и верни JSON объект со следующими данными:
-                        - word_count: общее количество слов
-                        - speaking_speed_wpm: скорость речи (слова в минуту, предполагая среднюю скорость 150 слов в минуту для аудио длиной около 8-10 минут)
-                        - frequently_mentioned_topics: массив из 3+ наиболее часто упоминаемых тем с количеством упоминаний
+                        content: `You are an expert at text analysis. Analyze the provided text and return a JSON object with the following data:
+                        - word_count: total word count
+                        - speaking_speed_wpm: speaking speed (words per minute, assuming average speed of 150 words per minute for audio around 8-10 minutes long)
+                        - frequently_mentioned_topics: array of 3+ most frequently mentioned topics with mention count
                         
-                        Верни только валидный JSON без дополнительного текста.`
+                        Return only valid JSON without additional text.`
                     },
                     {
                         role: "user",
-                        content: `Проанализируй следующий текст и создай JSON с аналитикой:\n\n${transcription}`
+                        content: `Analyze the following text and create JSON with analytics:\n\n${transcription}`
                     }
                 ],
                 max_tokens: 1000,
@@ -90,8 +90,7 @@ class AudioAnalyzer {
     }
 
     saveTranscription(transcription, outputDir) {
-        const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-        const filename = `transcription_${timestamp}.md`;
+        const filename = `transcription.md`;
         const filepath = path.join(outputDir, filename);
         
         const content = `# Транскрипция аудио

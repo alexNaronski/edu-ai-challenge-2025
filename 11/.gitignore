@@ -11,11 +11,6 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
-# Выходные файлы
-output/
-*.md
-!README.md
-
 # Логи
 logs
 *.log

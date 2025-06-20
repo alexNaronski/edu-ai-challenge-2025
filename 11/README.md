@@ -34,13 +34,6 @@
 3. **Настройте API ключ:**
    
    Создайте файл `.env` в корневой папке проекта:
-   ```bash
-   # Windows
-   copy .env.example .env
-   
-   # Linux/Mac
-   cp .env.example .env
-   ```
    
    Откройте файл `.env` и замените `YOUR_API_KEY_HERE` на ваш реальный OpenAI API ключ:
    ```
