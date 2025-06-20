@@ -65,12 +65,24 @@ class AudioAnalyzer {
                 messages: [
                     {
                         role: "system",
-                        content: `You are an expert at text analysis. Analyze the provided text and return a JSON object with the following data:
-                        - word_count: total word count
-                        - speaking_speed_wpm: speaking speed (words per minute, assuming average speed of 150 words per minute for audio around 8-10 minutes long)
-                        - frequently_mentioned_topics: array of 3+ most frequently mentioned topics with mention count
+                        content: `You are an expert at text analysis. Analyze the provided text and return a JSON object with the following exact structure:
+                        {
+                          "word_count": number,
+                          "speaking_speed_wpm": number,
+                          "frequently_mentioned_topics": [
+                            { "topic": "string", "mentions": number },
+                            { "topic": "string", "mentions": number },
+                            { "topic": "string", "mentions": number },
+                            { "topic": "string", "mentions": number },
+                            { "topic": "string", "mentions": number }
+                          ]
+                        }
                         
-                        Return only valid JSON without additional text.`
+                        - word_count: total word count in the text
+                        - speaking_speed_wpm: speaking speed in words per minute (estimate based on typical speaking rate)
+                        - frequently_mentioned_topics: array of 5-7 most frequently mentioned topics with mention count, sorted by frequency (highest first)
+                        
+                        Return only valid JSON without additional text or formatting.`
                     },
                     {
                         role: "user",
@@ -90,7 +102,8 @@ class AudioAnalyzer {
     }
 
     saveTranscription(transcription, outputDir) {
-        const filename = `transcription.md`;
+        const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+        const filename = `transcription_${timestamp}.md`;
         const filepath = path.join(outputDir, filename);
         
         const content = `# Транскрипция аудио
